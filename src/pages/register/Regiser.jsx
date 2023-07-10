@@ -9,7 +9,11 @@ export default function Register(){
                 <h3 className="registerLogo">YouTube WatchTime Tracker</h3>
                 <span className="registerDesc">Preventing Excessive Viewing</span>
             </div>
-            <div className="registerRight">kdfagkjajgapgj</div>
+            <div className="registerRight">
+                <div className="registerBox">
+                    <p className="registerMsg">ユーザー登録はこちら</p>
+                </div>
+            </div>
         </div>
     </div>
     );
