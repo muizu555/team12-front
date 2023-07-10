@@ -12,7 +12,7 @@ export default function Register(){
             <div className="registerRight">
                 <div className="registerBox">
                     <p className="registerMsg">Register User Info</p>
-                    <input type="text" className="registerInput" placeholder="username"/>
+                    <input type="text" className="registerInput" placeholder="username (3~25)"/>
                     <input type="text" className="registerInput" placeholder="playlistId"/>
                     <button className="registerButton">Create</button>
                 </div>
