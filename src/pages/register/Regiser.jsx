@@ -11,7 +11,10 @@ export default function Register(){
             </div>
             <div className="registerRight">
                 <div className="registerBox">
-                    <p className="registerMsg">ユーザー登録はこちら</p>
+                    <p className="registerMsg">Register User Info</p>
+                    <input type="text" className="registerInput" placeholder="username"/>
+                    <input type="text" className="registerInput" placeholder="playlistId"/>
+                    <button className="registerButton">Create</button>
                 </div>
             </div>
         </div>
