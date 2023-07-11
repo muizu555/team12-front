@@ -1,7 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useRef } from "react";
 import "./Register.css";
 
 export default function Register(){
+    const username = useRef();
+    const playlistId = useRef();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const user = {
+                username: username.current.value,
+                playlistId: playlistId.current.value
+            };
+            //register API を叩く
+            await axios.post("/api/v1/auth/register", user);
+        } catch (err) {
+            console.log(err);
+            
+        }
+    }
+
+
     return  (
     <div className="register">
         <div className="registerWrapper">
@@ -10,12 +31,24 @@ export default function Register(){
                 <span className="registerDesc">Preventing Excessive Viewing</span>
             </div>
             <div className="registerRight">
-                <div className="registerBox">
+                <form className="registerBox" onSubmit={(e) => handleSubmit(e)}>
                     <p className="registerMsg">Register User Info</p>
-                    <input type="text" className="registerInput" placeholder="username (3~25)"/>
-                    <input type="text" className="registerInput" placeholder="playlistId"/>
-                    <button className="registerButton">Create</button>
-                </div>
+                    <input 
+                      type="text" 
+                      className="registerInput" 
+                      placeholder="username (3~25)" 
+                      required
+                      ref={username}
+                    />
+                    <input 
+                      type="text" 
+                      className="registerInput" 
+                      placeholder="playlistId" 
+                      required
+                      ref={playlistId}
+                    />
+                    <button className="registerButton" type="submit">Create</button>
+                </form>
             </div>
         </div>
     </div>
