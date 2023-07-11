@@ -15,10 +15,9 @@ export default function Register(){
                 playlistId: playlistId.current.value
             };
             //register API を叩く
-            await axios.post("/api/v1/auth/register", user);
+            await axios.post("http://localhost:8000/api/v1/auth/register", user);
         } catch (err) {
             console.log(err);
-            
         }
     }
 
