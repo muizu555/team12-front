@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
 export default function Register(){
     const username = useRef();
     const playlistId = useRef();
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,10 +19,12 @@ export default function Register(){
             };
             //register API を叩く
             await axios.post("http://localhost:8000/api/v1/auth/register", user);
+            navigate("/");
         } catch (err) {
             console.log(err);
         }
     }
+
 
 
     return  (
