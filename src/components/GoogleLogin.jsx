@@ -8,7 +8,9 @@ export default function GoogleLogin() {
         flow: 'auth-code',
         onSuccess: async (codeResponse) => {
             console.log(codeResponse);
-            await axios.post('http://localhost:8000/api/v1/auth/googleauth',{code: codeResponse.code});
+            await axios.post('http://localhost:8000/api/v1/auth/googleauth',{code: codeResponse.code}, {
+                withCredentials: true,
+            });
             // console.log(tokens);
         },
         onError: errorResponse => console.log(errorResponse),
