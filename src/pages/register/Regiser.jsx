@@ -19,7 +19,7 @@ export default function Register(){
             };
             //register API を叩く
             await axios.post("http://localhost:8000/api/v1/auth/register", user);
-            navigate("/");
+            navigate("/login");
         } catch (err) {
             console.log(err);
         }
