@@ -5,6 +5,24 @@ import axios from "axios";
 
 export default function Home() {
 
+  const [fetchResult, setFetchResult] = useState()
+
+  useEffect(() => {
+    const fetcher = async () => {
+      setFetchResult(await Fetch())
+    }
+    fetcher()
+  }, [])
+
+  if (fetchResult === undefined) {
+    return (
+      <div className="content">
+        Now loading
+      </div>
+    )
+  }
+
+  /*くそこーど
   const [myname, setMyName] = useState([]);
 
   useEffect(() => {
@@ -42,6 +60,7 @@ export default function Home() {
 
     fetchRank();
   },[]);
+  */
 
   return (
     <>
@@ -62,9 +81,9 @@ export default function Home() {
           </div>
         </div>
         <div className="profile">
-          <div id="myName"><h1>{myname}</h1></div>
-          <div id="myWatchTime"><h1>{mytime}</h1></div>
-          <div id="myRanking"><h1>{myrank}</h1></div>
+          <div id="myName"><h1>{fetchResult.data.username}</h1></div>
+          <div id="myWatchTime"><h1>{fetchResult.data.amount}</h1></div>
+          <div id="myRanking"><h1>{fetchResult.data.rank}</h1></div>
         </div>
       </div>
     </>
@@ -85,14 +104,6 @@ export default function Home() {
 }
 
 function Content() {
-  /*const [fetchResult, setFetchResult] = useState()
-  useEffect(() => {
-    const fetcher = async() =>{
-      setFetchResult(await Fetch())
-    }
-    fetcher()
-  },[])*/
-
   return (
       <>
           <div className="content">
@@ -104,21 +115,15 @@ function Content() {
   )
 }
 
-/*async function Fetch() {
+async function Fetch() {
   try {
     const res = await axios.get("http://localhost:8000/api/v1/users/");
-    const data = {
-      name: res.data.username,
-      rank: res.data.rank,
-      time: res.data.amount,
-    }
-    console.log(data)
-    return data
+    return res
   } catch(err) {
     console.log("err");
   }
 }
-*/
+
 
 
 
