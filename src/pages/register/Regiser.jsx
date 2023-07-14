@@ -56,6 +56,7 @@ export default function Register(){
                       ref={playlistId}
                     />
                     <button className="registerButton" type="submit">Create</button>
+                    <button className="registerButton" onClick={() => navigate("/")}>login</button>
                 </form>
             </div>
         </div>
