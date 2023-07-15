@@ -31,7 +31,12 @@ export default function Home() {
       <div className="body">
         <div className="ranking">
           <div id="title">
-            <h1>ranking</h1>
+            <h1>Ranking</h1>
+          </div>
+          <div className="content">
+            <div className="order"><h1>rank</h1></div>
+            <div className="userName"><h1>name</h1></div>
+            <div className="watchTime"><h1>time</h1></div>
           </div>
           <div id="contents">
             {users.map((user, i) => <Content key={i} rank={user.rank} name={user.username} time={user.amount} />)}
@@ -39,12 +44,17 @@ export default function Home() {
         </div>
         {realuser ? (
           <div className="profile">
-            <div id="myName"><h1><span className="label">Name: </span>{realuser.username}</h1></div>
-            <div id="myWatchTime"><h1><span className="label">Time: </span>{realuser.amount}</h1></div>
-            <div id="myRanking"><h1><span className="label">Rank: </span>{realuser.rank}</h1></div>
+            <div id="title">
+              <h1>MyProfile</h1>
+            </div>
+            <div className="profileContent">
+              <div id="myName"><h1><span className="label">Name: </span>{realuser.username}</h1></div>
+              <div id="myWatchTime"><h1><span className="label">Time: </span>{realuser.amount}</h1></div>
+              <div id="myRanking"><h1><span className="label">Rank: </span>{realuser.rank}</h1></div>
+            </div>
           </div>
         ) : (
-          <div className="profile"><a href="/register">not logged in</a></div>
+          <div className="profileContent"><a href="/register">not logged in</a></div>
         )}
       </div>
     </>
@@ -53,13 +63,11 @@ export default function Home() {
 
 function Content({ rank, name, time }) {
   return (
-    <>
-      <div className="content">
-        <div className="order"><h1>{rank}</h1></div>
-        <div className="userName"><h1>{name}</h1></div>
-        <div className="watchTime"><h1>{time}</h1></div>
-      </div>
-    </>
+    <div className="content">
+      <div className="order"><h1>{rank}</h1></div>
+      <div className="userName"><h1>{name}</h1></div>
+      <div className="watchTime"><h1>{time}</h1></div>
+    </div>
   )
 }
 

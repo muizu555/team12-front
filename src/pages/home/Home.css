@@ -3,8 +3,6 @@
     height: 50px;
     background-color: #292929;
     text-align: center;
-    
-
 }
 #header a {
     position: relative;
@@ -18,7 +16,6 @@
 
 .body {
     width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: space-evenly;
     background-color: #f5f5f5;
@@ -40,7 +37,6 @@
     border-left: 1px solid #c4c4c4;
     border-right: 1px solid #c4c4c4;
     display: block;
-    
 }
 
 .content {
@@ -49,26 +45,47 @@
     justify-content: space-around;
     margin: 5%;
 }
+.content > div {
+    width: 30%;
+}
 
-.profile {
+.content > div > h1 {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profileContent {
+    margin-top: 20%;
     border: 1px solid #000;
     text-align: center;
     width: 350px;
     height: 480px;
-    margin-top: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.profile > div {
+.profileContent > div {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin-left: 13%;
+    margin-right: 13%;
+    border-bottom: 1px solid #292929;
+}
+
+#myName h1 {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .label {
-    color: gray;
+    font-size: 0.8em;
+}
+
+h1 {
     font-weight: 400;
 }
