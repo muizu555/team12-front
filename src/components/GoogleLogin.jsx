@@ -22,7 +22,7 @@ export default function GoogleLogin() {
     });
 
     if (loggedInSuccess) {
-        <Navigate to="/" />
+        return <Navigate to="/" />
     }
 
     return (
