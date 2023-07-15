@@ -53,9 +53,22 @@
 .profile {
     border: 1px solid #000;
     text-align: center;
-    width: 300px;
-    height: 450px;
+    width: 350px;
+    height: 480px;
     margin-top: 10%;
-    display: grid;
-    align-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.profile > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.label {
+    color: gray;
+    font-weight: 400;
 }

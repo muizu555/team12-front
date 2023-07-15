@@ -34,14 +34,14 @@ export default function Home() {
             <h1>ranking</h1>
           </div>
           <div id="contents">
-            {users.map((user) => <Content rank={user.rank} name={user.username} time={user.amount} />)}
+            {users.map((user, i) => <Content key={i} rank={user.rank} name={user.username} time={user.amount} />)}
           </div>
         </div>
         {realuser ? (
           <div className="profile">
-            <div id="myName"><h1>{realuser.username}</h1></div>
-            <div id="myWatchTime"><h1>{realuser.amount}</h1></div>
-            <div id="myRanking"><h1>{realuser.rank}</h1></div>
+            <div id="myName"><h1><span className="label">Name: </span>{realuser.username}</h1></div>
+            <div id="myWatchTime"><h1><span className="label">Time: </span>{realuser.amount}</h1></div>
+            <div id="myRanking"><h1><span className="label">Rank: </span>{realuser.rank}</h1></div>
           </div>
         ) : (
           <div className="profile"><a href="/register">not logged in</a></div>
@@ -65,7 +65,9 @@ function Content({ rank, name, time }) {
 
 async function Fetch() {
   try {
-    const res = await axios.get("http://localhost:8000/api/v1/users/");
+    const res = await axios.get("http://localhost:8000/api/v1/users/", {
+      withCredentials: true,
+    });
     console.log(res.data)
     return res
   } catch (err) {
