@@ -4,7 +4,6 @@ import axios from "axios";
 
 
 export default function Home() {
-
   const [fetchResult, setFetchResult] = useState()
 
   useEffect(() => {
@@ -22,45 +21,7 @@ export default function Home() {
     )
   }
 
-  /*くそこーど
-  const [myname, setMyName] = useState([]);
-
-  useEffect(() => {
-    async function fetchName() {
-      const res = await axios.get("http://localhost:8000/api/v1/users/");
-      setMyName(res.data.username);
-      return res;
-    }
-
-    fetchName();
-  },[]);
-
-
-  const [mytime, setMyTime] = useState([]);
-
-  useEffect(() => {
-    async function fetchTime() {
-      const res = await axios.get("http://localhost:8000/api/v1/users/");
-      setMyTime(res.data.amount);
-      return res;
-    }
-
-    fetchTime();
-  },[]);
-
-
-  const [myrank, setMyRank] = useState([]);
-
-  useEffect(() => {
-    async function fetchRank() {
-      const res = await axios.get("http://localhost:8000/api/v1/users/");
-      setMyRank(res.data.rank);
-      return res;
-    }
-
-    fetchRank();
-  },[]);
-  */
+  const { realuser, user: users } = fetchResult.data
 
   return (
     <>
@@ -73,57 +34,41 @@ export default function Home() {
             <h1>ranking</h1>
           </div>
           <div id="contents">
-            <Content />
-            <Content />
-            <Content />
-            <Content />
-            <Content />
+            {users.map((user) => <Content rank={user.rank} name={user.username} time={user.amount} />)}
           </div>
         </div>
-        <div className="profile">
-          <div id="myName"><h1>{fetchResult.data.username}</h1></div>
-          <div id="myWatchTime"><h1>{fetchResult.data.amount}</h1></div>
-          <div id="myRanking"><h1>{fetchResult.data.rank}</h1></div>
-        </div>
+        {realuser ? (
+          <div className="profile">
+            <div id="myName"><h1>{realuser.username}</h1></div>
+            <div id="myWatchTime"><h1>{realuser.amount}</h1></div>
+            <div id="myRanking"><h1>{realuser.rank}</h1></div>
+          </div>
+        ) : (
+          <div className="profile"><a href="/register">not logged in</a></div>
+        )}
       </div>
     </>
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
-function Content() {
+function Content({ rank, name, time }) {
   return (
-      <>
-          <div className="content">
-              <div className="order"><h1>rank</h1></div>
-              <div className="userName"><h1>name</h1></div>
-              <div className="watchTime"><h1>01:23</h1></div>
-          </div>
-      </>
+    <>
+      <div className="content">
+        <div className="order"><h1>{rank}</h1></div>
+        <div className="userName"><h1>{name}</h1></div>
+        <div className="watchTime"><h1>{time}</h1></div>
+      </div>
+    </>
   )
 }
 
 async function Fetch() {
   try {
     const res = await axios.get("http://localhost:8000/api/v1/users/");
+    console.log(res.data)
     return res
-  } catch(err) {
+  } catch (err) {
     console.log("err");
   }
 }
-
-
-
-
