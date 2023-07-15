@@ -18,7 +18,7 @@ export default function Register(){
                 playlistId: playlistId.current.value
             };
             //register API を叩く
-            const res = await axios.post("http://localhost:8000/api/v1/auth/register", user, {
+            const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/auth/register`, user, {
                 withCredentials: true
             });
             console.log("headers", res.headers)

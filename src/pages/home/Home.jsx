@@ -73,7 +73,7 @@ function Content({ rank, name, time }) {
 
 async function Fetch() {
   try {
-    const res = await axios.get("http://localhost:8000/api/v1/users/", {
+    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users/`, {
       withCredentials: true,
     });
     console.log(res.data)
