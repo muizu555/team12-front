@@ -36,7 +36,7 @@ export default function Home() {
           <div className="content">
             <div className="order"><h1>rank</h1></div>
             <div className="userName"><h1>name</h1></div>
-            <div className="watchTime"><h1>time</h1></div>
+            <div className="watchTime"><h1>time(s)</h1></div>
           </div>
           <div id="contents">
             {users.map((user, i) => <Content key={i} rank={user.rank} name={user.username} time={user.amount} />)}
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <div className="profileContent">
               <div id="myName"><h1><span className="label">Name: </span>{realuser.username}</h1></div>
-              <div id="myWatchTime"><h1><span className="label">Time: </span>{realuser.amount}</h1></div>
+              <div id="myWatchTime"><h1><span className="label">Time(s): </span>{realuser.amount}</h1></div>
               <div id="myRanking"><h1><span className="label">Rank: </span>{realuser.rank}</h1></div>
             </div>
           </div>
