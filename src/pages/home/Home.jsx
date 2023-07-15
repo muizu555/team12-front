@@ -54,7 +54,12 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="profileContent"><a href="/register">not logged in</a></div>
+          <div className="profile">
+            <div id="title">
+              <h1>MyProfile</h1>
+            </div>
+            <div className="profileContent"><h1>not logged in!</h1></div>
+          </div>
         )}
       </div>
     </>
