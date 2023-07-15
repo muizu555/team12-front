@@ -107,7 +107,7 @@ h1 {
     }
 
     .profile {
-        display: none;
+        visibility: hidden;
     }
 
     #title {
