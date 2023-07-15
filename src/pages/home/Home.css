@@ -94,7 +94,7 @@ h1 {
     .body {
         height: 100vh;
         flex-direction: column;
-        justify-content: none;
+        justify-content: start;
         text-align: center;
         font-size: 0.8em;
     }
